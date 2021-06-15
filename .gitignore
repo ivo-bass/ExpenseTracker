@@ -8,4 +8,4 @@ __pycache__
 
 .vscode
 
-ExpensesTracker/secret_key
+secret_key/
