@@ -4,7 +4,7 @@ from ExpensesTracker.expenses.forms import ExpenseForm
 from ExpensesTracker.expenses.models import Expense
 from ExpensesTracker.prof.forms import ProfileForm
 from ExpensesTracker.prof.models import Profile
-from ExpensesTracker.prof.views import calculate_money_left
+from ExpensesTracker.prof.utils import calculate_money_left
 
 
 def index_no_profile(request):
@@ -38,6 +38,11 @@ def index(request):
         return index_no_profile(request)
 
 
+def show_expense(request, form):
+    if form.is_valid():
+        expense = form.save()
+        expense.save()
+    return redirect(index)
 
 
 def create_expense(request):
@@ -45,10 +50,7 @@ def create_expense(request):
         form = ExpenseForm()
         return render(request, 'expense-create.html', {'form': form})
     form = ExpenseForm(request.POST)
-    if form.is_valid():
-        expense = form.save()
-        expense.save()
-    return redirect(index)
+    return show_expense(request, form)
 
 
 def edit_expense(request, pk):
@@ -56,10 +58,7 @@ def edit_expense(request, pk):
 
     if request.method == 'POST':
         form = ExpenseForm(request.POST, instance=expense)
-        if form.is_valid():
-            expense = form.save()
-            expense.save()
-            return redirect(index)
+        return show_expense(request, form)
     else:
         form = ExpenseForm(instance=expense)
 

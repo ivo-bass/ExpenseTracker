@@ -3,12 +3,7 @@ from django.shortcuts import render, redirect
 from ExpensesTracker.expenses.models import Expense
 from ExpensesTracker.prof.forms import ProfileForm
 from ExpensesTracker.prof.models import Profile
-
-
-def calculate_money_left(profile):
-    expenses = Expense.objects.all()
-    total_expenses = sum(exp.price for exp in expenses) if expenses else 0
-    return profile.budget - total_expenses
+from ExpensesTracker.prof.utils import calculate_money_left
 
 
 def show_profile(request):
