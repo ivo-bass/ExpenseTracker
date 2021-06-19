@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 
+{% block profile-link %}
+    ...
+{% endblock %}
+
+
 {% block content %}
+
     <h1>Enter your data</h1>
     <div class="form">
         <form method="POST">
             {% csrf_token %}
+            <small>{{ form.price.errors }}</small>
             <label for="budget">Budget</label>
             {{ form.budget }}
 
@@ -17,4 +24,5 @@
             <input type="submit" value="Submit">
         </form>
     </div>
+
 {% endblock %}

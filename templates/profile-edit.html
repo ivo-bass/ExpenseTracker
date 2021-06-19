@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block profile-link %}
-    <li class="right"><a href="{% url 'show profile' %}">Profile</a></li>
+    <li class="right"><a href="{% url 'index profile' %}">Profile</a></li>
 {% endblock %}
 
 {% block content %}
@@ -9,6 +9,7 @@
     <div class="form">
         <form method="POST">
             {% csrf_token %}
+            <small>{{ form.price.errors }}</small>
             <label for="budget">Budget</label>
             {{ form.budget }}
 
@@ -22,3 +23,250 @@
         </form>
     </div>
 {% endblock %}
+
+{#<html lang="en"><head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <link rel="stylesheet" type="text/css" href="../static/css/style.css">#}
+{#    <title>Expenses Tracker</title>#}
+{#    <style>#}
+{#        @import url(https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap);#}
+{##}
+{#body {#}
+{#    background: #f6f5f5;#}
+{#    font-family: 'Lato', sans-serif;#}
+{#    margin: 0;#}
+{#    padding: 0;#}
+{#}#}
+{##}
+{#a {#}
+{#    text-decoration: none;#}
+{#    color: white;#}
+{#}#}
+{##}
+{#nav {#}
+{#    background: #00334e;#}
+{#    height: 60px;#}
+{#}#}
+{##}
+{#nav ul {#}
+{#    display: flex;#}
+{#}#}
+{##}
+{#nav ul li,#}
+{#nav ul li a {#}
+{#    color: white;#}
+{#    text-decoration: none;#}
+{#    list-style: none;#}
+{#    font-size: 22px;#}
+{#    padding: 5px;#}
+{#    margin-top: 10px;#}
+{#}#}
+{##}
+{#nav ul li.right {#}
+{#    position: absolute;#}
+{#    right: 5px;#}
+{#}#}
+{##}
+{#nav ul li.right a {#}
+{#    font-size: 18px;#}
+{#    margin: 0 auto;#}
+{#}#}
+{##}
+{#nav ul li.img {#}
+{#    margin-top: 5px;#}
+{#}#}
+{##}
+{#h1 {#}
+{#    text-align: center;#}
+{#}#}
+{##}
+{#.form {#}
+{#    border-radius: 5px;#}
+{#    background-color: #f2f2f2;#}
+{#    padding: 20px;#}
+{#    width: 30%;#}
+{#    margin: 0 auto;#}
+{#}#}
+{##}
+{#input[type=text],#}
+{#input[type=url],#}
+{#input[type=number],#}
+{#select,#}
+{#textarea {#}
+{#    width: 100%;#}
+{#    padding: 12px 20px;#}
+{#    margin: 8px 0;#}
+{#    display: inline-block;#}
+{#    border: 1px solid #ccc;#}
+{#    border-radius: 4px;#}
+{#    box-sizing: border-box;#}
+{#}#}
+{##}
+{#input[type=submit],#}
+{#.button {#}
+{#    background-color: #145374;#}
+{#    color: white;#}
+{#    padding: 14px 20px;#}
+{#    border: none;#}
+{#    border-radius: 4px;#}
+{#    cursor: pointer;#}
+{#    width: 100px;#}
+{#    height: 50px;#}
+{#    font-family: 'Lato', sans-serif;#}
+{#    font-size: 16px;#}
+{#    display: block;#}
+{#    margin: 0 auto;#}
+{#    margin-top: 5px;#}
+{#}#}
+{##}
+{#input[type=submit]:hover,#}
+{#.button:hover {#}
+{#    background-color: #c73131;#}
+{#    text-decoration: underline;#}
+{#}#}
+{##}
+{#.button.edit {#}
+{#    background-color: #145374;#}
+{#    margin-right: 5px;#}
+{#    height: 22px;#}
+{#}#}
+{##}
+{#.button.delete {#}
+{#    background: #c73131;#}
+{#    height: 22px;#}
+{#}#}
+{##}
+{#.expenses-list {#}
+{#    display: flex;#}
+{#    align-items: flex-start;#}
+{#    margin: 0 auto;#}
+{#}#}
+{##}
+{#.expenses-list li {#}
+{#    list-style: none;#}
+{#    font-size: 18px;#}
+{#    padding: 5px;#}
+{#}#}
+{##}
+{#.expenses-list li.red {#}
+{#    color: #c73131;#}
+{#}#}
+{##}
+{#.expenses-list li.blue {#}
+{#    color: #145374;#}
+{#}#}
+{##}
+{#ul.expenses-list li.green {#}
+{#    color: #147444;#}
+{#}#}
+{##}
+{#.expenses-container {#}
+{#    display: flex;#}
+{#    justify-content: space-evenly;#}
+{#    margin-top: 50px;#}
+{#    margin-bottom: 80px;#}
+{#}#}
+{##}
+{#.expense-container,#}
+{#.expenses-list {#}
+{#    width: 33%;#}
+{#    -webkit-box-shadow: 13px 21px 60px -9px rgba(0, 0, 0, 0.75);#}
+{#    -moz-box-shadow: 13px 21px 60px -9px rgba(0, 0, 0, 0.75);#}
+{#    box-shadow: 13px 21px 60px -9px rgba(0, 0, 0, 0.75);#}
+{#    border-radius: 7px;#}
+{#    padding: 30px;#}
+{#    background: white;#}
+{#}#}
+{##}
+{#.expense-container h2 {#}
+{#    text-align: center;#}
+{#}#}
+{##}
+{#hr {#}
+{#    border: 0;#}
+{#    height: 0;#}
+{#    border-top: 1px solid rgba(0, 0, 0, 0.1);#}
+{#    border-bottom: 1px solid rgba(255, 255, 255, 0.3);#}
+{#}#}
+{##}
+{#.expense-container img {#}
+{#    display: block;#}
+{#    width: auto;#}
+{#    height: 400px;#}
+{#    margin: 0 auto;#}
+{#}#}
+{##}
+{#.expense-container div p {#}
+{#    font-weight: bold;#}
+{#    font-size: 18px;#}
+{#    text-decoration: underline;#}
+{#}#}
+{##}
+{#.expense-detail {#}
+{#    display: flex;#}
+{#    justify-content: space-between;#}
+{#}#}
+{##}
+{#.right {#}
+{#    display: flex;#}
+{#    justify-content: space-between;#}
+{#}#}
+{##}
+{#footer {#}
+{#    position: fixed;#}
+{#    bottom: 0;#}
+{#    background: #00334e;#}
+{#    width: 100%;#}
+{#    padding: 15px 0;#}
+{#}#}
+{##}
+{#footer div {#}
+{#    text-align: center;#}
+{#    color: white;#}
+{#}#}
+{##}
+{#small {#}
+{#    color: red;#}
+{#}#}
+{##}
+{#    </style>#}
+{#</head>#}
+{##}
+{#<body>#}
+{##}
+{#<nav>#}
+{#    <ul>#}
+{#        <li class="img"><img src="./static/images/dollar.png"></li>#}
+{#        <li><a href="/">Expenses Tracker</a></li>#}
+{##}
+{#        <li class="right"><a href="/profile">Profile</a></li>#}
+{##}
+{#    </ul>#}
+{#</nav>#}
+{#    <div class="body">#}
+{##}
+{#<h1>Enter your new data</h1>#}
+{#<div class="form">#}
+{#    <form method="POST">#}
+{#        <input type="hidden" name="csrfmiddlewaretoken" value="M6BlBJtidtTAjIVkeKKrO0pzGsJVBeMuJUjjBOd11b8tiULJ0qeyFSClYJH4npVf">#}
+{#        <label for="budget">Budget</label>#}
+{#        <input type="number" name="budget" value="1500" required="" id="id_budget">#}
+{##}
+{#        <label for="firstName">First Name</label>#}
+{#        <input type="text" name="first_name" value="Tanya" maxlength="15" required="" id="id_first_name">#}
+{##}
+{#        <label for="lastName">Last Name</label>#}
+{#        <input type="text" name="last_name" value="Staneva" maxlength="15" required="" id="id_last_name">#}
+{##}
+{#        <input type="submit" value="Edit">#}
+{#    </form>#}
+{#</div>#}
+{##}
+{#    </div>#}
+{#    <footer>#}
+{#    <div>Python Web Basics Exam Preparation @SoftUni</div>#}
+{#</footer>#}
+{##}
+{##}
+{#</body></html>#}

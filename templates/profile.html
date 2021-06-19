@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block profile-link %}
-    <li class="right"><a href="{% url 'show profile' %}">Profile</a></li>
+    <li class="right"><a href="{% url 'index profile' %}">Profile</a></li>
 {% endblock %}
 
 {% block content %}
@@ -9,13 +9,13 @@
     <h1>Your Profile</h1>
     <div class="expenses-container">
         <div class="expense-container">
-            <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
+            <h2>{{ form.first_name }} {{ form.last_name }}</h2>
             <hr>
-            <img src="../static/images/user.png" alt="user image">
+            <img src="../static/images/user.png" alt="profile image">
             <p>In your profile you can edit your profile data</p>
             <div class="expense-detail">
                 <div>
-                    <p>Budget Left: {{ money_left }}$</p>
+                    <p>Budget Left: {{ form.money_left }}$</p>
                 </div>
                 <div class="right">
                     <a class="button edit" href="{% url 'edit profile' %}">Edit Profile</a>

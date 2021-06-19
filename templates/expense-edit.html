@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
-
 {% block profile-link %}
-    <li class="right"><a href="{% url 'show profile' %}">Profile</a></li>
+    <li class="right"><a href="{% url 'index profile' %}">Profile</a></li>
 {% endblock %}
 
 {% block content %}
@@ -19,6 +18,7 @@
             <label for="image_url">Link to Image</label>
             {{ form.image_url }}
 
+            <small>{{ form.price.errors }}</small>
             <label for="price">Price</label>
             {{ form.price }}
 
